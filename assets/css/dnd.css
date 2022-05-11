@@ -1,0 +1,59 @@
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.drop-zone {
+    height: 100%;
+    display: grid;
+}
+
+.drop-zone .drop {
+    position: relative;
+    border: 1px dashed rgba(0, 0, 0, 0.2);
+    border-radius: var(--common-gap) !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drop .clear-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.enter {
+    border: 2px solid green !important;
+}
+
+.item {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: var(--common-gap);
+    margin-bottom: var(--common-gap);
+    font-size: 1.2em;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.go-back {
+    width: 50px;
+    height: 50px;
+    position: absolute !important;
+    left: 10px;
+    bottom: 10px;
+}
