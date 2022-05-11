@@ -44,3 +44,5 @@ Layout generator & component Drag n Drop UI based on Grid
 -   Grid Cell Merge
 -   Create Grid Layout
 -   Drag and Drop Chart Component
+
+![running](./assets/img/layout%26dnd.gif)
