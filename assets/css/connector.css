@@ -3,6 +3,15 @@ body {
     width: 100vw;
     height: 100vh;
 }
+
+.full {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 /* common */
 
 /* generator */

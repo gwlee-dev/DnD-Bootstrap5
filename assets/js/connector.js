@@ -38,7 +38,12 @@ const generatorToDnd = () => {
 };
 
 const resetGrid = () => {
-    generatorInit();
+    if (confirm('레이아웃을 처음상태로 되돌리시겠습니까 ?')) {
+        document.querySelectorAll('.setting input').forEach((input) => {
+            input.removeAttribute('disabled');
+        });
+        generatorInit();
+    }
 };
 
 const saveGrid = () => {
@@ -143,7 +148,7 @@ const createCopyElement = (target, startC, startR, endC, endR) => {
     div.style.backgroundColor = color;
     div.setAttribute('data-target', str);
     const h1 = document.createElement('h1');
-    h1.className = 'fs-1 fw-bold';
+    h1.className = 'fs-6 fw-bold';
     h1.textContent = str;
     div.appendChild(h1);
     target.appendChild(div);
@@ -288,6 +293,9 @@ const mouseUpHandler = (e) => {
     if (e.target.classList.contains('grid')) {
         e.preventDefault();
         selectedObject['end'] = e.target;
+        document.querySelectorAll('.setting input').forEach((input) => {
+            input.setAttribute('disabled', true);
+        });
         calculateMerge();
     }
 };
@@ -297,6 +305,12 @@ const mouseDownHandler = (e) => {
         e.preventDefault();
         selectedObject['start'] = e.target;
     }
+};
+
+const destroyMouseHandler = () => {
+    window.removeEventListener('mousedown', mouseDownHandler);
+
+    window.removeEventListener('mouseup', mouseUpHandler);
 };
 
 const mouseHandler = () => {
@@ -395,34 +409,40 @@ const removeComponent = () => {
 };
 
 const dropHandler = (e) => {
-    if (e.target.innerHTML === '') {
-        if (object.classList.contains('item')) {
-            const type = object.id;
-            e.target.innerHTML = dropTemplate(type);
-            createChart(type);
-            object.remove();
-        }
+    if (object != null && object != '' && object != undefined) {
+        if (e.target.innerHTML === '') {
+            if (object.classList.contains('item')) {
+                const type = object.id;
+                e.target.innerHTML = dropTemplate(type);
+                createChart(type);
+                object.remove();
+            }
 
-        e.target.classList.remove('enter');
+            e.target.classList.remove('enter');
+        }
     }
     object = '';
 };
 
 const dragLeaveHandler = (e) => {
-    if (object.classList.contains('item')) {
-        if (e.target.classList.contains('drop')) {
-            if (e.target.innerHTML === '') {
-                e.target.classList.remove('enter');
+    if (object != null && object != '' && object != undefined) {
+        if (object.classList.contains('item')) {
+            if (e.target.classList.contains('drop')) {
+                if (e.target.innerHTML === '') {
+                    e.target.classList.remove('enter');
+                }
             }
         }
     }
 };
 
 const dragEnterHandler = (e) => {
-    if (object.classList.contains('item')) {
-        if (e.target.classList.contains('drop')) {
-            if (e.target.innerHTML === '') {
-                e.target.classList.add('enter');
+    if (object != null && object != '' && object != undefined) {
+        if (object.classList.contains('item')) {
+            if (e.target.classList.contains('drop')) {
+                if (e.target.innerHTML === '') {
+                    e.target.classList.add('enter');
+                }
             }
         }
     }
@@ -466,6 +486,7 @@ const settingGrid = () => {
 };
 
 const dndInit = () => {
+    destroyMouseHandler();
     settingGrid();
     setDnDHandler();
 };
