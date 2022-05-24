@@ -73,7 +73,7 @@ const bundleCss = async (reload) => {
         .pipe(dest(PATH.css.dest, { sourcemaps: "." }))
         .on("error", (e) => logger.failed("write", e))
         .on("end", () => {
-            logger.success("SASS");
+            logger.success("SASS Budnling");
             if (reload == true) {
                 sync.reload();
             }
@@ -122,8 +122,13 @@ const proxy = async () => {
 
 const watcher = () => {
     log("👀 Start watching...");
+    watch(`static/**/*`).on("change", (e) => {
+        sync.reload();
+        log(`\n\n🔄 Source Changed: ${e}`);
+    });
     watch(`${SRC}/**/*.scss`).on("change", (e) => {
         css(true);
+        bundleCss(true);
         log(`\n\n🔄 Source Changed: ${e}`);
     });
     watch(`${SRC}/**/*.js`).on("change", (e) => {
@@ -137,7 +142,14 @@ const watcher = () => {
 };
 
 // run
-exports.dev = series([clean], [js], [css], [img], [proxy], [watcher]);
+exports.dev = series(
+    [clean],
+    [js],
+    [css],
+    [bundleCss],
+    [img],
+    [proxy],
+    [watcher]
+);
 
-exports.bundle = series([clean], [js], [bundleCss], [img]);
 exports.build = series([clean], [js], [css], [bundleCss], [img]);

@@ -1,126 +1,176 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>DND</title>
         <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
             rel="stylesheet"
-            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+            integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
             crossorigin="anonymous"
         />
+        <link
+            rel="stylesheet"
+            as="style"
+            crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+        />
         <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
             crossorigin="anonymous"
         ></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <link rel="stylesheet" href="./assets/css/dnd.css" />
+        <link rel="stylesheet" href="./assets/css/dnd.bundle.css" />
     </head>
-    <body>
-        <div id="generator-html" class="w-100 h-100">
-            <div
-                class="main d-flex justify-content-center align-items-center flex-column"
-            >
-                <h1 class="fs-1 fw-bold text-center">Layout Generator</h1>
-                <div class="row g-0 content mt-5">
-                    <div class="col p-2 generator">
-                        <div class="space"></div>
-                        <div class="column-size"></div>
-                        <div class="row-size"></div>
-                        <div id="grid" class="grid-cap"></div>
+    <body
+        style="
+            font-family: Pretendard, -apple-system, BlinkMacSystemFont,
+                system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
+                'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
+                'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+                sans-serif;
+        "
+    >
+        <div class="w-100 h-100" id="generator-html">
+            <div class="main h-100 d-flex flex-column">
+                <nav class="navbar bg-light mb-3">
+                    <div class="container-fluid">
+                        <span class="navbar-brand mb-0">Layout Generator</span>
                     </div>
-                    <div class="setting">
-                        <ul>
-                            <li>
-                                <div class="input-group">
-                                    <span class="input-group-text fw-bold"
-                                        >Column</span
-                                    >
-                                    <input
-                                        name="column"
-                                        class="form-control form-control-sm fw-bold"
-                                        min="1"
-                                        max="9"
-                                        value="3"
-                                        type="number"
-                                    />
-                                </div>
-                            </li>
-                            <li>
-                                <div class="input-group">
-                                    <span class="input-group-text fw-bold"
-                                        >Row</span
-                                    >
-                                    <input
-                                        name="row"
-                                        class="form-control form-control-sm fw-bold"
-                                        min="1"
-                                        max="9"
-                                        value="3"
-                                        type="number"
-                                    />
-                                </div>
-                            </li>
-                            <li>
-                                <div class="input-group">
-                                    <span class="input-group-text fw-bold"
-                                        >Column Gap</span
-                                    >
-                                    <input
-                                        name="column-gap"
-                                        class="form-control form-control-sm fw-bold"
-                                        min="0"
-                                        max="50"
-                                        value="0"
-                                        type="number"
-                                    />
-                                </div>
-                            </li>
-                            <li>
-                                <div class="input-group">
-                                    <span class="input-group-text fw-bold"
-                                        >Row Gap</span
-                                    >
-                                    <input
-                                        name="row-gap"
-                                        class="form-control form-control-sm fw-bold"
-                                        min="0"
-                                        max="50"
-                                        value="0"
-                                        type="number"
-                                    />
-                                </div>
-                            </li>
-                            <li>
-                                <div class="input-group">
+                </nav>
+                <div
+                    class="row w-100 g-3 pb-4 content flex-grow-1 align-self-center"
+                >
+                    <div class="col">
+                        <div class="card bg-transparent h-100">
+                            <div class="card-header">Layout</div>
+                            <div class="card-body generator">
+                                <div class="space"></div>
+                                <div class="column-size"></div>
+                                <div class="row-size"></div>
+                                <div id="grid" class="grid-cap"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div
+                            class="vstack gap-3 overflow-hidden d-flex flex-column h-100"
+                        >
+                            <div class="card">
+                                <div class="card-header">Grid Setting</div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <div class="row g-3 align-items-center">
+                                            <div class="col-7">
+                                                <label class="col-form-label">
+                                                    Column
+                                                </label>
+                                            </div>
+                                            <div class="col-5">
+                                                <input
+                                                    name="column"
+                                                    class="form-control fw-bold"
+                                                    min="1"
+                                                    max="9"
+                                                    value="3"
+                                                    type="number"
+                                                />
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="row g-3 align-items-center">
+                                            <div class="col-7">
+                                                <label class="col-form-label">
+                                                    Row
+                                                </label>
+                                            </div>
+                                            <div class="col-5">
+                                                <input
+                                                    name="row"
+                                                    class="form-control fw-bold"
+                                                    min="1"
+                                                    max="9"
+                                                    value="3"
+                                                    type="number"
+                                                />
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="row g-3 align-items-center">
+                                            <div class="col-7">
+                                                <label class="col-form-label">
+                                                    Column Gap
+                                                </label>
+                                            </div>
+                                            <div class="col-5">
+                                                <input
+                                                    name="column-gap"
+                                                    class="form-control fw-bold"
+                                                    min="1"
+                                                    max="9"
+                                                    value="3"
+                                                    type="number"
+                                                />
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="row g-3 align-items-center">
+                                            <div class="col-7">
+                                                <label class="col-form-label">
+                                                    Row Gap
+                                                </label>
+                                            </div>
+                                            <div class="col-5">
+                                                <input
+                                                    name="row-gap"
+                                                    class="form-control fw-bold"
+                                                    min="1"
+                                                    max="9"
+                                                    value="3"
+                                                    type="number"
+                                                />
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="card-footer hstack gap-2 p-2">
                                     <button
-                                        class="btn btn-danger form-control"
+                                        class="btn btn-secondary form-control"
                                         type="button"
                                         onclick="resetGrid();"
                                     >
                                         RESET
                                     </button>
                                     <button
-                                        class="btn btn-success form-control"
+                                        class="btn btn-primary form-control"
                                         type="button"
                                         onclick="saveGrid();"
                                     >
                                         SAVE
                                     </button>
                                 </div>
-                            </li>
-                            <li>
-                                <div id="grid-box" class="grid-box mt-5"></div>
-                            </li>
-                        </ul>
+                            </div>
+                            <div class="card flex-grow-1">
+                                <div class="card-header">Activation List</div>
+                                <div class="card-body position-relative p-0">
+                                    <div
+                                        id="grid-box"
+                                        class="grid-box vstack overflow-auto position-absolute h-100 w-100 p-2"
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="dnd-html" class="w-100 h-100 d-none">
+        <div class="w-100 h-100 d-none" id="dnd-html">
             <div class="row g-0 h-100">
                 <div class="col">
                     <div id="item-zone" class="card h-100">

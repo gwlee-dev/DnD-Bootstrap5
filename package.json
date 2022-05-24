@@ -15,7 +15,6 @@
     "main": "server/server.js",
     "scripts": {
         "build": "nodemon --watch ./gulpfile.js --exec babel-node ./node_modules/.bin/gulp build",
-        "bundle": "nodemon --watch ./gulpfile.js --exec babel-node ./node_modules/.bin/gulp bundle",
         "server": "nodemon --watch ./server.js --exec babel-node ./server.js",
         "watch": "nodemon --watch ./gulpfile.js --exec babel-node ./node_modules/.bin/gulp dev"
     },
