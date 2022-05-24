@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"
+        ></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="stylesheet" href="./assets/css/dnd.css" />
+    </head>
+    <body>
+        <div id="generator-html" class="w-100 h-100">
+            <div
+                class="main d-flex justify-content-center align-items-center flex-column"
+            >
+                <h1 class="fs-1 fw-bold text-center">Layout Generator</h1>
+                <div class="row g-0 content mt-5">
+                    <div class="col p-2 generator">
+                        <div class="space"></div>
+                        <div class="column-size"></div>
+                        <div class="row-size"></div>
+                        <div id="grid" class="grid-cap"></div>
+                    </div>
+                    <div class="setting">
+                        <ul>
+                            <li>
+                                <div class="input-group">
+                                    <span class="input-group-text fw-bold"
+                                        >Column</span
+                                    >
+                                    <input
+                                        name="column"
+                                        class="form-control form-control-sm fw-bold"
+                                        min="1"
+                                        max="9"
+                                        value="3"
+                                        type="number"
+                                    />
+                                </div>
+                            </li>
+                            <li>
+                                <div class="input-group">
+                                    <span class="input-group-text fw-bold"
+                                        >Row</span
+                                    >
+                                    <input
+                                        name="row"
+                                        class="form-control form-control-sm fw-bold"
+                                        min="1"
+                                        max="9"
+                                        value="3"
+                                        type="number"
+                                    />
+                                </div>
+                            </li>
+                            <li>
+                                <div class="input-group">
+                                    <span class="input-group-text fw-bold"
+                                        >Column Gap</span
+                                    >
+                                    <input
+                                        name="column-gap"
+                                        class="form-control form-control-sm fw-bold"
+                                        min="0"
+                                        max="50"
+                                        value="0"
+                                        type="number"
+                                    />
+                                </div>
+                            </li>
+                            <li>
+                                <div class="input-group">
+                                    <span class="input-group-text fw-bold"
+                                        >Row Gap</span
+                                    >
+                                    <input
+                                        name="row-gap"
+                                        class="form-control form-control-sm fw-bold"
+                                        min="0"
+                                        max="50"
+                                        value="0"
+                                        type="number"
+                                    />
+                                </div>
+                            </li>
+                            <li>
+                                <div class="input-group">
+                                    <button
+                                        class="btn btn-danger form-control"
+                                        type="button"
+                                        onclick="resetGrid();"
+                                    >
+                                        RESET
+                                    </button>
+                                    <button
+                                        class="btn btn-success form-control"
+                                        type="button"
+                                        onclick="saveGrid();"
+                                    >
+                                        SAVE
+                                    </button>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="grid-box" class="grid-box mt-5"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="dnd-html" class="w-100 h-100 d-none">
+            <div class="row g-0 h-100">
+                <div class="col">
+                    <div id="item-zone" class="card h-100">
+                        <div class="card-header">item-zone</div>
+                        <div class="card-body items">
+                            <div
+                                class="item no-select"
+                                draggable="true"
+                                id="bar"
+                            >
+                                BAR CHART
+                            </div>
+                            <div
+                                class="item no-select"
+                                draggable="true"
+                                id="line"
+                            >
+                                LINE CHART
+                            </div>
+                            <div
+                                class="item no-select"
+                                draggable="true"
+                                id="bubble"
+                            >
+                                BUBBLE CHART
+                            </div>
+                            <div
+                                class="item no-select"
+                                draggable="true"
+                                id="pie"
+                            >
+                                PIE CHART
+                            </div>
+                            <div
+                                class="item no-select"
+                                draggable="true"
+                                id="doughnut"
+                            >
+                                DOUGHNUT CHART
+                            </div>
+                            <div
+                                class="item no-select"
+                                draggable="true"
+                                id="radar"
+                            >
+                                RADAR CHART
+                            </div>
+                            <div
+                                class="item no-select"
+                                draggable="true"
+                                id="scatter"
+                            >
+                                SCATTER CHART
+                            </div>
+                            <div
+                                class="item no-select"
+                                draggable="true"
+                                id="polarArea"
+                            >
+                                POLAR AREA CHART
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-10">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <span>drop-zone</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="w-100 h-100">
+                                <div id="grid-zone"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="./assets/js/check.js"></script>
+        <script type="text/javascript" src="./assets/js/connector.js"></script>
+    </body>
+</html>

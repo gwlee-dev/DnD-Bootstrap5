@@ -1,0 +1,47 @@
+{
+    "name": "dnd-bootstrap5",
+    "version": "1.0.0",
+    "description": "## 🌳Tree",
+    "homepage": "https://github.com/gwlee-dev/DnD-Bootstrap5#readme",
+    "bugs": {
+        "url": "https://github.com/gwlee-dev/DnD-Bootstrap5/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gwlee-dev/DnD-Bootstrap5.git"
+    },
+    "license": "MIT",
+    "author": "Geonwoo Lee",
+    "main": "server/server.js",
+    "scripts": {
+        "build": "nodemon --watch ./gulpfile.js --exec babel-node ./node_modules/.bin/gulp build",
+        "bundle": "nodemon --watch ./gulpfile.js --exec babel-node ./node_modules/.bin/gulp bundle",
+        "server": "nodemon --watch ./server.js --exec babel-node ./server.js",
+        "watch": "nodemon --watch ./gulpfile.js --exec babel-node ./node_modules/.bin/gulp dev"
+    },
+    "dependencies": {
+        "@babel/core": "^7.17.12",
+        "@babel/node": "^7.17.10",
+        "@babel/preset-env": "^7.17.12",
+        "@prettier/plugin-pug": "^2.0.0",
+        "autoprefixer": "^10.4.7",
+        "browser-sync": "^2.27.10",
+        "cssnano": "^5.1.8",
+        "del": "^6.1.0",
+        "express": "^4.18.1",
+        "gulp": "^4.0.2",
+        "gulp-concat": "^2.6.1",
+        "gulp-postcss": "^9.0.1",
+        "gulp-rename": "^2.0.0",
+        "gulp-sass": "^5.1.0",
+        "gulp-sourcemaps": "^3.0.0",
+        "gulp-terser": "^2.1.0",
+        "gulp-util": "^3.0.8",
+        "morgan": "^1.10.0",
+        "nodemon": "^2.0.16",
+        "postcss": "^8.4.14",
+        "prettier": "^2.6.2",
+        "sass": "^1.51.0",
+        "terser": "^5.13.1"
+    }
+}
