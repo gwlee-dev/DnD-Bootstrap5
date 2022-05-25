@@ -43,6 +43,7 @@ const resetGrid = () => {
             input.removeAttribute("disabled");
         });
         generatorInit();
+        countActivated();
     }
 };
 
@@ -76,12 +77,12 @@ const saveGrid = () => {
 
 const removeMergedGrid = (e) => {
     if (confirm("해당 영역을 삭제하시겠습니까?")) {
-        const targetData = e.target.textContent;
+        const targetData = e.target.parentNode.textContent;
         const target = document.querySelector(
             `.grid-copy div[data-target="${targetData}"]`
         );
         target.remove();
-        e.target.remove();
+        e.target.parentNode.remove();
         countActivated();
     }
 };
@@ -159,12 +160,12 @@ const createCopyElement = (target, startC, startR, endC, endR) => {
     const div2 = document.createElement("div");
     div2.className = "activated-item";
     div2.style.cssText = `--dnd-bg: ${color}`;
-    // div2.style.backgroundColor = color;
-    // div2.style.backgroundColor = color;
-    // div2.style.borderRadius = "10px";
-    div2.style.cursor = "pointer";
     div2.textContent = str;
-    div2.addEventListener("click", removeMergedGrid);
+    const delButton = document.createElement("button");
+    delButton.className = "btn-close btn-sm ms-auto";
+    delButton.type = "button";
+    delButton.addEventListener("click", removeMergedGrid);
+    div2.appendChild(delButton);
     gridBox.appendChild(div2);
 
     countActivated();
@@ -172,6 +173,7 @@ const createCopyElement = (target, startC, startR, endC, endR) => {
 
 const countActivated = () => {
     const gridBox = document.querySelector("#grid-box");
+    const targetClass = "activated-item";
     const divCount = gridBox.getElementsByClassName("activated-item").length;
     const countIndicator = document.getElementById("activation-indicator");
     countIndicator.innerHTML = divCount;
