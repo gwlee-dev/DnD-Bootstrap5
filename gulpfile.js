@@ -25,7 +25,7 @@ const PATH = {
         dest: `${DEST}/css`,
     },
     js: {
-        src: `${SRC}/js/*.js`,
+        src: `${SRC}/js/**/*.js`,
         dest: `${DEST}/js`,
     },
     img: {
@@ -58,7 +58,7 @@ const css = async (reload) => {
 };
 
 const bundleCss = async (reload) => {
-    await src(`${SRC}/scss/*.scss`, { sourcemaps: true })
+    await src(`${SRC}/scss/style.scss`, { sourcemaps: true })
         .pipe(
             sass({
                 includePaths: "node_modules",

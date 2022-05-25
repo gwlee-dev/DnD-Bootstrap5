@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,249 +17,272 @@
             crossorigin
             href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
         />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css"
+        />
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
             crossorigin="anonymous"
         ></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <link rel="stylesheet" href="./assets/css/dnd.bundle.css" />
+        <link rel="stylesheet" href="/assets/css/dnd.bundle.css" />
     </head>
-    <body
-        style="
-            font-family: Pretendard, -apple-system, BlinkMacSystemFont,
-                system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
-                'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
-                'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-                sans-serif;
-        "
-    >
-        <div class="w-100 h-100" id="generator-html">
-            <div class="main h-100 d-flex flex-column">
-                <nav class="navbar bg-light mb-3">
-                    <div class="container-fluid">
-                        <a class="navbar-brand mb-0" href="/"
-                            >Layout Generator</a
-                        >
-                    </div>
-                </nav>
-                <div
-                    class="row w-100 g-3 pb-4 content flex-grow-1 align-self-center"
-                >
-                    <div class="col">
-                        <div class="card bg-transparent h-100">
-                            <div class="card-header">Layout</div>
-                            <div class="card-body generator">
-                                <div class="space"></div>
-                                <div class="column-size"></div>
-                                <div class="row-size"></div>
-                                <div id="grid" class="grid-cap"></div>
+    <body>
+        <main class="w-100 h-100 d-flex flex-column">
+            <nav class="navbar bg-light mb-3">
+                <div class="container-fluid">
+                    <a class="navbar-brand mb-0" href="/">Layout Generator</a>
+                </div>
+            </nav>
+            <div class="flex-grow-1 h-100" id="generator-html">
+                <div class="main h-100 d-flex flex-column">
+                    <div
+                        class="row w-100 g-3 pb-4 content flex-grow-1 align-self-center"
+                    >
+                        <div class="col">
+                            <div class="card bg-transparent h-100">
+                                <div class="card-header">Layout</div>
+                                <div class="card-body generator">
+                                    <div class="space"></div>
+                                    <div class="column-size"></div>
+                                    <div class="row-size"></div>
+                                    <div id="grid" class="grid-cap"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-auto">
-                        <div
-                            class="vstack gap-3 overflow-hidden d-flex flex-column h-100"
-                        >
-                            <div class="card setting">
-                                <div class="card-header">Grid Setting</div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <div class="row g-3 align-items-center">
-                                            <div class="col-7">
-                                                <label class="col-form-label">
-                                                    Column
-                                                </label>
+                        <div class="col-auto">
+                            <div
+                                class="vstack gap-3 overflow-hidden d-flex flex-column h-100"
+                            >
+                                <div class="card setting">
+                                    <div class="card-header">Grid Setting</div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <div
+                                                class="row g-3 align-items-center"
+                                            >
+                                                <div class="col-7">
+                                                    <label
+                                                        class="col-form-label"
+                                                    >
+                                                        Column
+                                                    </label>
+                                                </div>
+                                                <div class="col-5">
+                                                    <input
+                                                        name="column"
+                                                        class="form-control fw-bold"
+                                                        min="1"
+                                                        max="9"
+                                                        value="3"
+                                                        type="number"
+                                                    />
+                                                </div>
                                             </div>
-                                            <div class="col-5">
-                                                <input
-                                                    name="column"
-                                                    class="form-control fw-bold"
-                                                    min="1"
-                                                    max="9"
-                                                    value="3"
-                                                    type="number"
-                                                />
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div
+                                                class="row g-3 align-items-center"
+                                            >
+                                                <div class="col-7">
+                                                    <label
+                                                        class="col-form-label"
+                                                    >
+                                                        Row
+                                                    </label>
+                                                </div>
+                                                <div class="col-5">
+                                                    <input
+                                                        name="row"
+                                                        class="form-control fw-bold"
+                                                        min="1"
+                                                        max="9"
+                                                        value="3"
+                                                        type="number"
+                                                    />
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <div class="row g-3 align-items-center">
-                                            <div class="col-7">
-                                                <label class="col-form-label">
-                                                    Row
-                                                </label>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div
+                                                class="row g-3 align-items-center"
+                                            >
+                                                <div class="col-7">
+                                                    <label
+                                                        class="col-form-label"
+                                                    >
+                                                        Column Gap
+                                                    </label>
+                                                </div>
+                                                <div class="col-5">
+                                                    <input
+                                                        name="column-gap"
+                                                        class="form-control fw-bold"
+                                                        min="1"
+                                                        max="9"
+                                                        value="3"
+                                                        type="number"
+                                                    />
+                                                </div>
                                             </div>
-                                            <div class="col-5">
-                                                <input
-                                                    name="row"
-                                                    class="form-control fw-bold"
-                                                    min="1"
-                                                    max="9"
-                                                    value="3"
-                                                    type="number"
-                                                />
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div
+                                                class="row g-3 align-items-center"
+                                            >
+                                                <div class="col-7">
+                                                    <label
+                                                        class="col-form-label"
+                                                    >
+                                                        Row Gap
+                                                    </label>
+                                                </div>
+                                                <div class="col-5">
+                                                    <input
+                                                        name="row-gap"
+                                                        class="form-control fw-bold"
+                                                        min="1"
+                                                        max="9"
+                                                        value="3"
+                                                        type="number"
+                                                    />
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <div class="row g-3 align-items-center">
-                                            <div class="col-7">
-                                                <label class="col-form-label">
-                                                    Column Gap
-                                                </label>
-                                            </div>
-                                            <div class="col-5">
-                                                <input
-                                                    name="column-gap"
-                                                    class="form-control fw-bold"
-                                                    min="1"
-                                                    max="9"
-                                                    value="3"
-                                                    type="number"
-                                                />
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <div class="row g-3 align-items-center">
-                                            <div class="col-7">
-                                                <label class="col-form-label">
-                                                    Row Gap
-                                                </label>
-                                            </div>
-                                            <div class="col-5">
-                                                <input
-                                                    name="row-gap"
-                                                    class="form-control fw-bold"
-                                                    min="1"
-                                                    max="9"
-                                                    value="3"
-                                                    type="number"
-                                                />
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="card-footer hstack gap-2 p-2">
-                                    <button
-                                        class="btn btn-secondary form-control"
-                                        type="button"
-                                        onclick="resetGrid();"
-                                    >
-                                        RESET
-                                    </button>
-                                    <button
-                                        class="btn btn-primary form-control"
-                                        type="button"
-                                        onclick="saveGrid();"
-                                    >
-                                        SAVE
-                                    </button>
+                                        </li>
+                                    </ul>
+                                    <div class="card-footer hstack gap-2 p-2">
+                                        <button
+                                            class="btn btn-secondary form-control"
+                                            type="button"
+                                            onclick="resetGrid();"
+                                        >
+                                            RESET
+                                        </button>
+                                        <button
+                                            class="btn btn-primary form-control"
+                                            type="button"
+                                            onclick="saveGrid();"
+                                        >
+                                            SAVE
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card flex-grow-1">
-                                <div class="card-header d-flex">
-                                    Activation List
-                                    <span
-                                        id="activation-indicator"
-                                        class="badge rounded-pill bg-secondary align-self-center ms-auto"
-                                    >
-                                        0
-                                    </span>
-                                </div>
-                                <div class="card-body position-relative p-0">
+                                <div class="card flex-grow-1">
+                                    <div class="card-header d-flex">
+                                        Activation List
+                                        <span
+                                            id="activation-indicator"
+                                            class="badge rounded-pill bg-secondary align-self-center ms-auto"
+                                        >
+                                            0
+                                        </span>
+                                    </div>
                                     <div
-                                        id="grid-box"
-                                        class="grid-box vstack gap-2 overflow-auto position-absolute h-100 w-100 p-2"
-                                    ></div>
+                                        class="card-body position-relative p-0"
+                                    >
+                                        <div
+                                            id="grid-box"
+                                            class="grid-box vstack gap-2 overflow-auto position-absolute h-100 w-100 p-2"
+                                        ></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="w-100 h-100 d-none" id="dnd-html">
-            <div class="row g-0 h-100">
-                <div class="col">
-                    <div id="item-zone" class="card h-100">
-                        <div class="card-header">item-zone</div>
-                        <div class="card-body items">
-                            <div
-                                class="item no-select"
-                                draggable="true"
-                                id="bar"
-                            >
-                                BAR CHART
-                            </div>
-                            <div
-                                class="item no-select"
-                                draggable="true"
-                                id="line"
-                            >
-                                LINE CHART
-                            </div>
-                            <div
-                                class="item no-select"
-                                draggable="true"
-                                id="bubble"
-                            >
-                                BUBBLE CHART
-                            </div>
-                            <div
-                                class="item no-select"
-                                draggable="true"
-                                id="pie"
-                            >
-                                PIE CHART
-                            </div>
-                            <div
-                                class="item no-select"
-                                draggable="true"
-                                id="doughnut"
-                            >
-                                DOUGHNUT CHART
-                            </div>
-                            <div
-                                class="item no-select"
-                                draggable="true"
-                                id="radar"
-                            >
-                                RADAR CHART
-                            </div>
-                            <div
-                                class="item no-select"
-                                draggable="true"
-                                id="scatter"
-                            >
-                                SCATTER CHART
-                            </div>
-                            <div
-                                class="item no-select"
-                                draggable="true"
-                                id="polarArea"
-                            >
-                                POLAR AREA CHART
+            <div class="flex-grow-1 h-100 d-none" id="dnd-html">
+                <div class="main h-100 d-flex flex-column">
+                    <div
+                        class="row w-100 g-3 pb-4 content flex-grow-1 align-self-center"
+                    >
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <span>Layout</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="w-100 h-100">
+                                        <div id="grid-zone"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-10">
-                    <div class="card h-100">
-                        <div class="card-header">
-                            <span>drop-zone</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="w-100 h-100">
-                                <div id="grid-zone"></div>
+                        <div class="col-auto">
+                            <div id="item-zone" class="card h-100">
+                                <div class="card-header">Items</div>
+                                <div class="card-body">
+                                    <div class="items vstack gap-2">
+                                        <div
+                                            class="item no-select"
+                                            draggable="true"
+                                            id="bar"
+                                        >
+                                            BAR CHART
+                                        </div>
+                                        <div
+                                            class="item no-select"
+                                            draggable="true"
+                                            id="line"
+                                        >
+                                            LINE CHART
+                                        </div>
+                                        <div
+                                            class="item no-select"
+                                            draggable="true"
+                                            id="bubble"
+                                        >
+                                            BUBBLE CHART
+                                        </div>
+                                        <div
+                                            class="item no-select"
+                                            draggable="true"
+                                            id="pie"
+                                        >
+                                            PIE CHART
+                                        </div>
+                                        <div
+                                            class="item no-select"
+                                            draggable="true"
+                                            id="doughnut"
+                                        >
+                                            DOUGHNUT CHART
+                                        </div>
+                                        <div
+                                            class="item no-select"
+                                            draggable="true"
+                                            id="radar"
+                                        >
+                                            RADAR CHART
+                                        </div>
+                                        <div
+                                            class="item no-select"
+                                            draggable="true"
+                                            id="scatter"
+                                        >
+                                            SCATTER CHART
+                                        </div>
+                                        <div
+                                            class="item no-select"
+                                            draggable="true"
+                                            id="polarArea"
+                                        >
+                                            POLAR AREA CHART
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
         <script type="text/javascript" src="./assets/js/check.js"></script>
         <script type="text/javascript" src="./assets/js/connector.js"></script>
+        <script>
+            dnd.init();
+        </script>
     </body>
 </html>
