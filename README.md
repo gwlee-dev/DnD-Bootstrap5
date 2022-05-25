@@ -1,26 +1,12 @@
 # DnD-With-Layout-Generator
 
-## 🌳Tree
+```
+static - html files
+dist - compiled files
+src - source files
+```
 
-```
-DnD-With-Layout-Generator
-│ dnd.html ❓ drag and drop page
-│ generator.html ❓ layout generator page
-│ index.html ❓ layout generator + dnd page
-│ LICENSE
-│ README.md
-└─assets
-    ├─css
-    │ connector.css ❓ layout generator + dnd
-    │ dnd.css
-    │ generator.css
-    │ reset.css ❓ default style reset
-    │
-    └─js
-      connector.js ❓ layout generator + dnd
-      dnd.js
-      generator.js
-```
+Forked from : https://github.com/mspark2Dev/DnD-With-Layout-Generator
 
 ## 💬 What is this ?
 
@@ -32,11 +18,11 @@ Layout generator & component Drag n Drop UI based on Grid
 
 -   motive : https://github.com/sdras/cssgridgenerator
 
-![layout-generator](./assets/img/lg.png)
+![layout-generator](./img/lg.png)
 
 ### Component Drag n Drop
 
-![dnd](./assets/img/dnd.png)
+![dnd](./img/dnd.png)
 
 ## 🔧 Function
 
@@ -45,4 +31,4 @@ Layout generator & component Drag n Drop UI based on Grid
 -   Create Grid Layout
 -   Drag and Drop Chart Component
 
-![running](./assets/img/layout%26dnd.gif)
+![running](./img/layout%26dnd.gif)

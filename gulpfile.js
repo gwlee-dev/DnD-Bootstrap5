@@ -28,10 +28,6 @@ const PATH = {
         src: `${SRC}/js/**/*.js`,
         dest: `${DEST}/js`,
     },
-    img: {
-        src: `${SRC}/img/**/*`,
-        dest: `${DEST}/img`,
-    },
 };
 
 // processing tasks
@@ -89,15 +85,6 @@ const js = async (reload) => {
         });
 };
 
-const img = async (reload) => {
-    await src(PATH.img.src)
-        .pipe(dest(PATH.img.dest))
-        .on("end", (e) => {
-            logger.success("IMAGE");
-            reload && sync.reload();
-        });
-};
-
 // other tasks
 const logger = {
     success: (msg) => {
@@ -135,21 +122,9 @@ const watcher = () => {
         js(true);
         log(`\n\n🔄 Source Changed: ${e}`);
     });
-    watch(`${SRC}/img/**/*`).on("change", (e) => {
-        img(true);
-        log(`\n\n🔄 Source Changed: ${e}`);
-    });
 };
 
 // run
-exports.dev = series(
-    [clean],
-    [js],
-    [css],
-    [bundleCss],
-    [img],
-    [proxy],
-    [watcher]
-);
+exports.dev = series([clean], [js], [css], [bundleCss], [proxy], [watcher]);
 
-exports.build = series([clean], [js], [css], [bundleCss], [img]);
+exports.build = series([clean], [js], [css], [bundleCss]);

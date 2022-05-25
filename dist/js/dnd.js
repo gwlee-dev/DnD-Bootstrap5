@@ -1,5 +1,5 @@
 /* common */
-let gridString = `<div id="grid" class="drop-zone" style="grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr; gap: 5px; z-index: -1;"><div class="grid drop" data-target="njyc2arux" style="grid-area: 1 / 1 / 2 / 4;"></div><div class="grid drop" data-target="nhlmk8e3p" style="grid-area: 2 / 1 / 3 / 2;"></div><div class="grid drop" data-target="82qbgdz5b" style="grid-area: 3 / 1 / 4 / 2;"></div><div class="grid drop" data-target="twholn05f" style="grid-area: 2 / 2 / 4 / 3;"></div><div class="grid drop" data-target="370728h0r" style="grid-area: 2 / 3 / 3 / 4;"></div><div class="grid drop" data-target="9tx6e4t4x" style="grid-area: 3 / 3 / 4 / 4;"></div></div>`;
+let gridString = "";
 /* common */
 
 /* generator */
@@ -65,7 +65,6 @@ const saveGrid = () => {
             target.className = "drop-zone";
 
             gridString = target.outerHTML;
-            console.log(gridString);
             target.remove();
             generatorToDnd();
             dndInit();
@@ -555,10 +554,14 @@ const dndInit = () => {
 /* common */
 // generatorInit();
 
+const override = () => {
+    gridString = `<div id="grid" class="drop-zone" style="grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr; gap: 5px; z-index: -1;"><div class="grid drop" data-target="njyc2arux" style="grid-area: 1 / 1 / 2 / 4;"></div><div class="grid drop" data-target="nhlmk8e3p" style="grid-area: 2 / 1 / 3 / 2;"></div><div class="grid drop" data-target="82qbgdz5b" style="grid-area: 3 / 1 / 4 / 2;"></div><div class="grid drop" data-target="twholn05f" style="grid-area: 2 / 2 / 4 / 3;"></div><div class="grid drop" data-target="370728h0r" style="grid-area: 2 / 3 / 3 / 4;"></div><div class="grid drop" data-target="9tx6e4t4x" style="grid-area: 3 / 3 / 4 / 4;"></div></div>`;
+    dndInit();
+};
+
 (() => {
     window.dnd = {
-        dndInit: dndInit,
-        setGrid: settingGrid,
+        override: override,
         init: generatorInit,
     };
 })();

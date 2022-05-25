@@ -1,22 +1,3 @@
-/* common */
-body {
-    width: 100vw;
-    height: 100vh;
-    font-family: Pretendard, -apple-system, BlinkMacSystemFont,
-        system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
-        'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
-        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-        sans-serif;
-}
-
-.full {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
+@import "./connector.scss";
 @import "./generator.scss";
 @import "./dnd.scss";
