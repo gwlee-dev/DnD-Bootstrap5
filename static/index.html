@@ -59,7 +59,7 @@
                         <div
                             class="vstack gap-3 overflow-hidden d-flex flex-column h-100"
                         >
-                            <div class="card">
+                            <div class="card setting">
                                 <div class="card-header">Grid Setting</div>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
@@ -157,7 +157,15 @@
                                 </div>
                             </div>
                             <div class="card flex-grow-1">
-                                <div class="card-header">Activation List</div>
+                                <div class="card-header d-flex">
+                                    Activation List
+                                    <span
+                                        id="activation-indicator"
+                                        class="badge rounded-pill bg-secondary align-self-center ms-auto"
+                                    >
+                                        0
+                                    </span>
+                                </div>
                                 <div class="card-body position-relative p-0">
                                     <div
                                         id="grid-box"

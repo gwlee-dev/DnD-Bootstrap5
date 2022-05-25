@@ -16,6 +16,17 @@ body {
 
 /* generator */
 
+.activated-item {
+    --dnd-bg: transparent;
+    position: relative;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    color: inherit;
+    background-color: var(--dnd-bg);
+    border: 1px solid var(--dnd-bg);
+    border-radius: 0.375rem;
+}
+
 #generator-html {
     .generator {
         display: grid;
